@@ -1,11 +1,12 @@
-let express = require('express');
-let morgan = require('morgan');
-let nunjucks = require('nunjucks');
-let fs = require('fs');
+const express = require('express');
+const morgan = require('morgan');
+const nunjucks = require('nunjucks');
+const fs = require('fs');
 
-let logger = morgan('tiny');
 
-let app = express();
+const logger = morgan('tiny');
+
+const app = express();
 
 app.set('view engine', 'html'); // have res.render work with html files
 app.engine('html', nunjucks.render); // when giving html files to res.render, tell it to use nunjucks
@@ -21,15 +22,15 @@ app.use(function (req, res, next) {
 });
 
 app.use('/pupz', function(req, res, next){
-    res.sendFile("/Users/strangefrond/fsa/twitter-js/views/index.html");
-})
+    res.sendFile("views/index.html", {root: __dirname});
+});
 
 app.get('/', function(req, res, next){
   const people = [{name: 'Full'}, {name: 'Stacker'}, {name: 'Son'}];
   res.render( 'index', {title: 'Hall of Fame', people: people} );
 
 
-})
+});
 
 app.listen(3000);
 
