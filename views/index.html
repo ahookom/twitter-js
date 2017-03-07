@@ -18,10 +18,11 @@
       {% if showForm %}
         <form action="/tweets" method="POST">
           <label for="name_field">Name:</label>
-          <input name="name" type="text" id="name_field" />
+          <input name="name" type="text" id="name_field" value="username" class="greyed" />
+        
 
           <label for="text_field">Text:</label>
-          <input name="text" type="text" id="text_field" style="width: 350px;" />
+          <input name="text" type="text" id="text_field" style="width: 350px;" value="jet fuel can't melt steel beams" class="greyed"/>
 
           <input type="submit" value="Submit" />
         </form>
