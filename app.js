@@ -21,7 +21,7 @@ app.use(function (req, res, next) {
 });
 
 app.use('/pupz', function(req, res, next){
-    res.send("pupzzzz");
+    res.sendFile("/Users/strangefrond/fsa/twitter-js/views/index.html");
 })
 
 app.get('/', function(req, res, next){
