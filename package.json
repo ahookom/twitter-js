@@ -11,7 +11,9 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.15.2",
+    "fs": "0.0.1-security",
     "morgan": "^1.8.1",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "nunjucks": "^3.0.0"
   }
 }
