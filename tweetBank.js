@@ -13,6 +13,8 @@ function find (properties) {
   return _.cloneDeep(_.filter(data, properties));
 }
 
+module.exports = { add: add, list: list, find: find };
+
 const randArrayEl = function(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 };
@@ -28,10 +30,10 @@ const getFakeTweet = function() {
   return "Fullstack Academy is " + randArrayEl(awesome_adj) + "! The instructors are just so " + randArrayEl(awesome_adj) + ". #fullstacklove #codedreams";
 };
 
+add("Oscar", "trashcan");
+
 for (let i = 0; i < 10; i++) {
   module.exports.add( getFakeName(), getFakeTweet() );
 }
-
-module.exports = { add: add, list: list, find: find };
-
-console.log(data);
+// console.log(find("name"));
+//console.log(data);
