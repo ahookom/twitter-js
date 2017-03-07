@@ -2,14 +2,33 @@ const express = require('express');
 const router = express.Router();
 // could use one line instead: const router = require('express').Router();
 const tweetBank = require('../tweetBank');
+const bodyParser = require('body-parser');
+
+router.use(express.static('public'));
+router.use(bodyParser.json());
 
 router.get('/', function (req, res) {
   let tweets = tweetBank.list();
-  res.render( 'index', { tweets: tweets } );
+  console.log('req body is',req.body);
+  res.render( 'index', { tweets: tweets, showForm: true } );
 });
 
+router.get('/users/:name', function(req, res) {
+  const name = req.params.name;
+  const list = tweetBank.find( {name: name} );
+  res.render( 'index', { tweets: list } );
+});
 
-router.use(express.static('public'));
+router.get('/tweets/:id', function(req, res, next){
+  const twitId = +req.params.id;
+  const uniqTweet = tweetBank.find(['id',twitId]);
+  console.log(uniqTweet, 'twitId is', twitId);
+  res.render('index', { tweets: uniqTweet });
+});
+
+router.post();
+
+
 module.exports = router;
 
 
